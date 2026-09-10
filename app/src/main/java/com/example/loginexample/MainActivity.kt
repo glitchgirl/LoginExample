@@ -1,47 +1,47 @@
 package com.example.loginexample
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.loginexample.ui.theme.LoginExampleTheme
+import android.widget.Button
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            LoginExampleTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+
+        setContentView(R.layout.activity_main)
+
+
+
+        // Get references to UI elements
+
+        val emailInput = findViewById<EditText>(R.id.emailInput)
+
+        val passwordInput = findViewById<EditText>(R.id.passwordInput)
+
+        val loginButton = findViewById<Button>(R.id.loginButton)
+
+
+
+        // Set up the login button click listener
+
+        loginButton.setOnClickListener {
+
+            // Create an Intent to go to HomeActivity
+
+            val intent = Intent(this, HomeActivity::class.java)
+
+            // Optional: Pass data to the home screen
+
+            intent.putExtra("userEmail", emailInput.text.toString())
+
+            startActivity(intent)
+
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    LoginExampleTheme {
-        Greeting("Android")
     }
+
 }
