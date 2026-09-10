@@ -70,7 +70,7 @@
 
         android:layout_marginBottom="15dp"
 
-        android:background="@drawable/edittext_background" />
+        />
 
 
 
@@ -90,7 +90,7 @@
 
         android:layout_marginBottom="30dp"
 
-        android:background="@drawable/edittext_background" />
+        />
 
 
 
